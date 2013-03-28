@@ -39,7 +39,7 @@ describe "Authentication" do
 
       describe "follwed by signout" do
         before { click_link "Sign out" }
-        it {should have_link('Sign in') }
+        it { should have_link('Sign in') }
       end
   	end
   end
