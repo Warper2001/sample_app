@@ -81,7 +81,11 @@ describe "User pages" do
 
 		describe "follow/unfollow buttons" do
 			let(:other_user) { FactoryGirl.create(:user) }
+<<<<<<< HEAD
 			before { sign_in user }
+=======
+			before { sign_in }
+>>>>>>> 615ae72a5bf4cc5c212fc7a4b0070d800ddf37e9
 
 			describe "following a user" do
 				before { visit user_path(other_user) }
@@ -89,7 +93,11 @@ describe "User pages" do
 				it "should increment the following user count" do
 					expect do
 						click_button "Follow"
+<<<<<<< HEAD
 					end.to change(user.followed_users, :count).by(1)
+=======
+					end.to change(user.followed_user, :count).by(1)
+>>>>>>> 615ae72a5bf4cc5c212fc7a4b0070d800ddf37e9
 				end
 
 				it "should increment the other user's followed user count" do
