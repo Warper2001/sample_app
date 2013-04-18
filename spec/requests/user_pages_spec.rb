@@ -82,7 +82,6 @@ describe "User pages" do
 		describe "follow/unfollow buttons" do
 			let(:other_user) { FactoryGirl.create(:user) }
 			before { sign_in user }
-			before { sign_in }
 
 			describe "following a user" do
 				before { visit user_path(other_user) }
@@ -91,7 +90,6 @@ describe "User pages" do
 					expect do
 						click_button "Follow"
 					end.to change(user.followed_users, :count).by(1)
-					end.to change(user.followed_user, :count).by(1)
 				end
 
 				it "should increment the other user's followed user count" do
@@ -121,7 +119,7 @@ describe "User pages" do
 				it "should decrement the other user's followers count" do
 					expect do
 						click_button "Unfollow"
-					end.change(other_user.followers, :count).by(-1)
+					end.to change(other_user.followers, :count).by(-1)
 				end
 
 				describe "toggling the button" do
@@ -229,7 +227,7 @@ describe "User pages" do
   	describe "followers" do
   		before do
   			sign_in other_user
-  			visit followed_user_path(other_user)
+  			visit followers_user_path(other_user)
   		end
 
   		it { should have_selector('title', text: full_title('Followers')) }
